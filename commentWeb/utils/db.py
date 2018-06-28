@@ -10,7 +10,7 @@ import pymysql
 
 def get_comment(fields, index1, index2):
     fs = ",".join(fields)             
-    sql = "SELECT %s FROM s_lcs_game_comments_qq WHERE source='qq_mobile' AND char_length(content) > 4 AND id >= %s limit %s" % (fs, index1, index2)
+    sql = "SELECT %s FROM s_lcs_game_useless_clean_comments_qq WHERE source='qq_mobile' AND char_length(content) > 4 AND id >= %s limit %s" % (fs, index1, index2)
     conn = pymysql.connect(host='127.0.0.1',port=3306,user='root',password='eXYhzAWjyvy8grwM',db='game_process',charset='utf8mb4')
     # 创建mysql 游标
     cursor = conn.cursor()
@@ -24,7 +24,7 @@ def get_comment(fields, index1, index2):
 
 def last_comment(fields, index1, index2):
     fs = ",".join(fields)             
-    sql = "select * from (SELECT %s FROM s_lcs_game_comments_qq WHERE source='qq_mobile' AND char_length(content) > 4 AND id <= %s order by id desc limit %s) as a order by a.id" % (fs, index1, index2)
+    sql = "select * from (SELECT %s FROM s_lcs_game_useless_clean_comments_qq WHERE source='qq_mobile' AND char_length(content) > 4 AND id <= %s order by id desc limit %s) as a order by a.id" % (fs, index1, index2)
     conn = pymysql.connect(host='127.0.0.1',port=3306,user='root',password='eXYhzAWjyvy8grwM',db='game_process',charset='utf8mb4')
     # 创建mysql 游标
     cursor = conn.cursor()
@@ -37,7 +37,7 @@ def last_comment(fields, index1, index2):
     return rs
 
 def update_comment(index, field, value):
-    sql = "UPDATE s_lcs_game_comments_qq SET %s=%s WHERE id=%s" % (field, value, index)
+    sql = "UPDATE s_lcs_game_useless_clean_comments_qq SET %s=%s WHERE id=%s" % (field, value, index)
     conn = pymysql.connect(host='127.0.0.1',port=3306,user='root',password='eXYhzAWjyvy8grwM',db='game_process',charset='utf8mb4',autocommit=True)
     cursor = conn.cursor()
     cursor.execute(sql)
