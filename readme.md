@@ -2,11 +2,11 @@ Game_Comment_Clean
 ====================
 
 #### gameComment_useless_clean4
+
 1. 计算余弦相似度
 - 获得 dataFrame 数据集
 ```
 content_clear 
---------------
 玩到31不能玩了
 ```
 - 分词
@@ -14,8 +14,9 @@ content_clear
 import jieba
 def jieba_word(x):
    return [ ''.join(i) for i in  jieba.cut(x)]
-
 jieba_word 
+
+content_clear
 --------------------
 [玩到,31,不能,玩,了]
 ```
@@ -39,6 +40,7 @@ acorpus_matrix_T = corpus_matrix.T
 # 此时 计算两种的 夹角余弦
 similarities = cosine_similarity(acorpus_matrix_T)
 ```
+
 2. 取出和 i 条评论最相似的评论 max(similarities[i,:]) 的 index
 - similarities 是一个对称矩阵，和无向图的矩阵表示类似
 - 对角线赋值为0，对角线=向量本身和本身夹角余弦值=1
@@ -54,6 +56,7 @@ similarities = cosine_similarity(acorpus_matrix_T)
     # 选出 max 余弦值，即最相似的评论
     like_content_index = np.where(test_cosine_similarity == max(test_cosine_similarity))[0][0]
 ```
+
 3. 自动分类
 - 手动分类一部分
 - 根据 相似度 给待分类评论分类
