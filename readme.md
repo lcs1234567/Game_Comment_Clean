@@ -2,7 +2,7 @@ Game_Comment_Clean
 ====================
 
 #### gameComment_useless_clean4
- 1. 计算余弦相似度
+1. 计算余弦相似度
 - 获得 dataFrame 数据集
 ```
 content_clear 
@@ -16,7 +16,7 @@ def jieba_word(x):
    return [ ''.join(i) for i in  jieba.cut(x)]
 
 jieba_word 
---------------
+--------------------
 [玩到,31,不能,玩,了]
 ```
 - 生成词典
